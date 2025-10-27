@@ -1,0 +1,120 @@
+/* ===== Global Background ===== */
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: "Poppins", sans-serif;
+  color: #f1f1f1;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* ===== Container ===== */
+.authcontainer {
+  display: flex;
+  justify-content: center; /* centers both forms horizontally */
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 800px; /* ensures container doesn’t stretch too much */
+  width: 90%;
+  flex-wrap: wrap; /* wraps on smaller screens */
+  box-sizing: border-box;
+}
+
+/* ===== Form Cards ===== */
+.authform {
+  flex: 1 1 300px; /* equal width, minimum 300px */
+  max-width: 360px; /* prevents one from pushing the other */
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.authform:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ===== Headings ===== */
+.authform h2 {
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  color: #e5e9ff;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* ===== Inputs ===== */
+.authform input {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.authform input::placeholder {
+  color: rgba(240, 240, 240, 0.8);
+}
+
+.authform input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(106, 198, 255, 0.5);
+}
+
+/* ===== Buttons ===== */
+.authform button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.8rem;
+}
+
+.authform button:hover {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 14px rgba(37, 117, 252, 0.5);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .authcontainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .authform {
+    width: 100%;
+    max-width: 400px;
+  }
+}

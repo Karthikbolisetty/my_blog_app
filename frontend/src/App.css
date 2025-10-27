@@ -1,0 +1,208 @@
+
+:root {
+  --primary-color: #2575fc;
+  --primary-hover: #6a11cb;
+  --delete-color: #ff4b5c;
+  --delete-hover: #ff6b81;
+  --background-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --text-primary: #f5f6fa;
+  --text-secondary: #cfd3e2;
+  --shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--background-gradient);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+
+.app-container {
+  max-width: 900px;
+  width: 95%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+}
+
+
+h2 {
+  font-size: 1.4rem;
+  color: #e6e9ff;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 6px;
+  margin-bottom: 1.2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Form Section ===== */
+.form-section {
+  background: var(--glass-bg);
+  border-radius: 15px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-section input::placeholder,
+.form-section textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.4);
+}
+
+.form-section button {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-section button:hover {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 14px rgba(37, 117, 252, 0.4);
+  transform: translateY(-2px);
+}
+
+
+.post-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-card {
+  background: var(--glass-bg);
+  padding: 1.3rem 1.6rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.post-author {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.post-card p {
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #f1f1f1;
+}
+
+.post-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 10px;
+}
+
+.post-actions button {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.post-actions button:first-child {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+}
+
+.post-actions button:first-child:hover {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  transform: translateY(-1px);
+}
+
+.post-actions button:last-child {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: #fff;
+}
+
+.post-actions button:last-child:hover {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.3rem;
+  }
+
+  .form-section,
+  .post-card {
+    padding: 1.2rem;
+  }
+}
