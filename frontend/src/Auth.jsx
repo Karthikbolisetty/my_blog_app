@@ -105,7 +105,7 @@ const navigate=useNavigate();
   const handlerRegister = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/auth/register", {
+      const response = await fetch("https://my-blog-app-bnuu.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -137,7 +137,7 @@ const navigate=useNavigate();
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/auth/login", {
+      const response = await fetch("https://my-blog-app-bnuu.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
