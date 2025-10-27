@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import './App.css';
-const Api_url="http://localhost:3001/api/posts";
+const Api_url="https://my-blog-app-bnuu.onrender.com/api/posts";
 export default function Blogmodule(){
 const [title,settitle]=useState("");
 const [name,setname]=useState("");
