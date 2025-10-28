@@ -64,9 +64,30 @@ await fetchposts();
     setname(post.name);
     setcontent(post.content);
    }
+   const handlelogout=()=>{
+    localStorage.removeItem("token");
+    navigate("/Auth");
+   }
 
 return(
 <div className="app-container">
+  <button 
+  onClick={handlelogout} 
+  style={{
+    float: "right",
+    padding: "10px 18px",
+    backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    cursor: "pointer",
+    boxShadow: "0 3px 6px rgba(0,0,0,0.2)"
+  }}
+>
+  Logout
+</button>
+
   <div className="form-section">
     <h2>Create a new post</h2>
      <form onSubmit={handlesubmit}>
