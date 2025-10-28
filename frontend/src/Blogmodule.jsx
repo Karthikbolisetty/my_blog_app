@@ -14,6 +14,7 @@ useEffect(()=>{
     navigate("/Auth");
   }
 },[token,navigate])
+  
 
 const [posts,setposts]=useState([]);
 const fetchposts=async()=>{
