@@ -150,34 +150,32 @@ const generateToken = (id) => {
   });
 };
 
-// 🟢 Register Route
+
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Validate input
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: "Please provide all fields" });
     }
 
-    // Check if user exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ success: false, message: "User already exists" });
     }
 
-    // Hash password
+  
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create user
+  
     const newUser = await User.create({
       name,
       email,
       password: hashedPassword,
     });
 
-    // ✅ Always send JSON response with success + message
+  
     return res.status(201).json({
       success: true,
       message: "Registered successfully!",
@@ -194,12 +192,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// 🟢 Login Route
+
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user
+    
     const existingUser = await User.findOne({ email });
 
     if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
