@@ -48,8 +48,24 @@
 const express = require("express");
 const router = express.Router();
 const posts = require("../models/postmodel.js");
+const upload=require("../middleware/upload.js")
+const fs=require("fs");
+const path=require("path");
 
-
+router.post("/",upload.single("iamge"),async(req,res)=>{
+  try{
+    const{title,content,author}=req.body;
+    // let imageurl="";
+    // if(req.file){
+    //   imageurl=`uploads/${req.file.filename}`
+    // }
+    const imageurl=req.file?req.file.path:"";
+    const post=await posts.create({title,content,author,imageurl});
+    res.status(201).json(post);
+  }catch(error){
+    console.log(error)
+  }
+})
 router.post("/", async (req, res) => {
   const { title, name, content } = req.body;
   const newPost = await posts.create({ title, name, content });

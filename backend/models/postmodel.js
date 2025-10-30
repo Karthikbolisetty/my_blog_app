@@ -14,6 +14,9 @@ required:true
 type:String,
 required:true
     }
+    ,imageurl:{
+        type:String
+    }
 },{
     timestamps:true,
 }
