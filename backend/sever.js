@@ -12,12 +12,12 @@ const app = express();
 const port = 3001;
 
 
-app.use(
-  cors({
-    origin: "https://my-blog-app-frontend.onrender.com",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ["https://my-blog-app-frontend.onrender.com"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(express.json());
 
 
