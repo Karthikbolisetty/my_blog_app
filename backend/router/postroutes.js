@@ -99,8 +99,14 @@ const posts = require("../models/postmodel.js");
 const upload = require("../middleware/upload.js");
 const fs = require("fs");
 const path = require("path");
+const cloudinary=require("../config/cloudinary.js")
 
-// ✅ Create a new post
+const getpublicId=(imageurl)=>{
+  const parts=imageurl.split("/");
+  const publicidwithextension=parts.slice(-2).join("/");
+  const publicId=publicidwithextension.split(".")[0];
+  return publicId;
+}
 router.post("/", upload.single("image"), async (req, res) => {
   try {
     const { title, content, name } = req.body;
@@ -113,7 +119,7 @@ router.post("/", upload.single("image"), async (req, res) => {
       content,
       name,
       imageurl
-      
+
     });
 
     res.status(201).json(newPost);
@@ -135,19 +141,39 @@ router.get("/", async (req, res) => {
 });
 
 // ✅ Update a post
-router.put("/:id", async (req, res) => {
+router.put("/:id", upload.single("image"),async (req, res) => {
   try {
+    const {title,content,name}=res.body;
+    const updatedata={title,content,name};
+    if(req.file){
+      const exsistingpost=await posts.findById(req.params.id);
+      if(exsistingpost && exsistingpost.imageurl){
+        const publicId=getpublicId(exsistingpost.imageurl);
+        await cloudinary.uploader.destroy(publicId);
+      }
+      updatedata.imageurl=req.file.path;
+    }
     const updatedPost = await posts.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(updatedPost);
-  } catch (error) {
+    
+  } 
+  catch (error) {
     console.error("❌ Error updating post:", error.message);
     res.status(500).json({ message: "Error updating post" });
   }
 });
 
 // ✅ Delete a post
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",upload.single("image"), async (req, res) => {
   try {
+    const post= await posts.findById(req.params.id);
+    if(!post){
+      return res.status(404).json({message:"post not found"})
+    }
+    if(post.imageurl){
+      const publicId=getpublicId(post.imageurl);
+      await cloudinary.uploader.destroy(publicId)
+    }
     await posts.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
