@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const authroutes=require("./router/authRouter.js")
 const path=require("path");
+const fs = require("fs");
 
 const postroutes = require("./router/postroutes.js"); 
 
@@ -11,7 +12,12 @@ const app = express();
 const port = 3001;
 
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://my-blog-app-frontend.onrender.com",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 

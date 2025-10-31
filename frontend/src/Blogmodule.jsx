@@ -126,19 +126,17 @@ return(
       <div key={post._id} className="post-card">
         <h3>{post.title}</h3>
         <p className="post-author">by {post.name}</p>
-        {post ?.imageurl&&(
-          
-          <img
-  src={
-    post.imageurl
-      ? `${Api_BASE_url}/${post.imageurl}`   // ✅ full backend URL
-      : "https://cdn-icons-png.flaticon.com/512/3039/3039380.png"  // ✅ fallback image icon
-  }
-  alt={post.title || "No image available"}
-  className="post-image"
-/>
+       {post?.imageurl && (
+  <img
+    src={post.imageurl.startsWith("http") 
+      ? post.imageurl 
+      : `${Api_BASE_url}/${post.imageurl}`
+    }
+    alt={post.title || "No image available"}
+    className="post-image"
+  />
+)}
 
-        )}
         <p>{post.content}</p>
         <div className="post-actions">
 <button onClick={()=>handleEdit(post)}>edit</button>
