@@ -127,9 +127,7 @@ return(
         <h3>{post.title}</h3>
         <p className="post-author">by {post.name}</p>
         {post ?.imageurl&&(
-          // <img src={post.imageurl}
-          // alt={post.title}
-          // className="post-image"/>
+          
           <img
   src={
     post.imageurl

@@ -113,6 +113,7 @@ router.post("/", upload.single("image"), async (req, res) => {
       content,
       name,
       imageurl
+      
     });
 
     res.status(201).json(newPost);
