@@ -18,7 +18,7 @@ const storage=new CloudinaryStorage({
     cloudinary:cloudinary,
     params:{
         folder:"blog_posts",
-        allowed_formats:["jpeg","png","jpg",'gif']
+        allowedFormats:["jpeg","png","jpg",'gif']
     }
 });
 const upload=multer({storage:storage});
