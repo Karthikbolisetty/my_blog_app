@@ -1,7 +1,7 @@
 import {useState,useEffect,useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import './App.css';
-const Api_BASE_url="https://my-blog-app-backend1.onrender.com";
+const Api_BASE_url="https://my-blog-app-backend-yjy9.onrender.com";
 const Api_url=`${Api_BASE_url}/api/posts`;
 export default function Blogmodule(){
 const [title,settitle]=useState("");
@@ -115,7 +115,7 @@ return(
         <label>upload image</label>
         <input type="file"
         ref={fileInputRef}
-        onChange={(e)=>setImage(e.target.file[0])}
+        onChange={(e)=>setImage(e.target.files[0])}
         accept="image/*"/>
      <button type="submit">{editingpostid? "updatepost":"create post"}</button>
      </form>

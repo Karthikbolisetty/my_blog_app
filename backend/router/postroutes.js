@@ -52,9 +52,9 @@ const upload=require("../middleware/upload.js")
 const fs=require("fs");
 const path=require("path");
 
-router.post("/",upload.single("iamge"),async(req,res)=>{
+router.post("/",upload.single("image"),async(req,res)=>{
   try{
-    const{title,content,author}=req.body;
+    const{title,content,name}=req.body;
     // let imageurl="";
     // if(req.file){
     //   imageurl=`uploads/${req.file.filename}`
@@ -66,11 +66,11 @@ router.post("/",upload.single("iamge"),async(req,res)=>{
     console.log(error)
   }
 })
-router.post("/", async (req, res) => {
-  const { title, name, content } = req.body;
-  const newPost = await posts.create({ title, name, content });
-  res.status(201).json(newPost);
-});
+// router.post("/", async (req, res) => {
+//   const { title, name, content } = req.body;
+//   const newPost = await posts.create({ title, name, content });
+//   res.status(201).json(newPost);
+// });
 
 
 router.get("/", async (req, res) => {
