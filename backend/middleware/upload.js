@@ -11,14 +11,15 @@ const multer=require("multer");
 // })
 // const upload=multer({storage:storage});
 // module.exports=upload;
+const multer=require("multer");
 const {CloudinaryStorage}=require("multer-storage-cloudinary");
 const cloudinary=require("../config/cloudinary.js");
 const storage=new CloudinaryStorage({
     cloudinary:cloudinary,
     params:{
         folder:"blog_posts",
-        allowedformats:["jpeg","png","jpg",'gif']
+        allowed_formats:["jpeg","png","jpg",'gif']
     }
-})
+});
 const upload=multer({storage:storage});
 module.exports=upload;

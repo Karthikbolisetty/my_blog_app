@@ -11,7 +11,7 @@ const[editingpostid,seteditingpostid]=useState(null);
 const navigate=useNavigate();
 const token=localStorage.getItem("token");
 const fileInputRef=useRef(null);
-const [image,setImage]=useState(null);
+const [image,setimage]=useState(null);
 
 useEffect(()=>{
   if(!token){
@@ -54,11 +54,12 @@ method:method,
 // headers:{"Content-Type":"application/json"},
 // body:JSON.stringify(postdata)
 body:formData
-})
+});
 if(response.ok){
   settitle("");
   setcontent("");
   setname("");
+  setimage(null);
   seteditingpostid(null);
   if(fileInputRef.current){
     fileInputRef.current.value=""
@@ -115,7 +116,7 @@ return(
         <label>upload image</label>
         <input type="file"
         ref={fileInputRef}
-        onChange={(e)=>setImage(e.target.files[0])}
+        onChange={(e)=>setimage(e.target.files[0])}
         accept="image/*"/>
      <button type="submit">{editingpostid? "updatepost":"create post"}</button>
      </form>
@@ -126,11 +127,17 @@ return(
       <div key={post._id} className="post-card">
         <h3>{post.title}</h3>
         <p className="post-author">by {post.name}</p>
-        {post ?.imageurl&&(
-          <img src={post.imageurl}
-          alt={post.title}
-          className="post-image"/>
-        )}
+       {post?.imageurl && (
+  <img
+    src={post.imageurl.startsWith("http") 
+      ? post.imageurl 
+      : `${Api_BASE_url}/${post.imageurl}`
+    }
+    alt={post.title || "No image available"}
+    className="post-image"
+  />
+)}
+
         <p>{post.content}</p>
         <div className="post-actions">
 <button onClick={()=>handleEdit(post)}>edit</button>
