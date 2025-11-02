@@ -1,4 +1,4 @@
-const multer=require("multer");
+
 // const path=require("path");
 // const storage=multer.diskStorage({
 //     destination:function(req,res,cb){
@@ -11,16 +11,19 @@ const multer=require("multer");
 // })
 // const upload=multer({storage:storage});
 // module.exports=upload;
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary.js");
 
-const {CloudinaryStorage}=require("multer-storage-cloudinary");
-const cloudinary=require("../config/cloudinary.js");
-const storage=new CloudinaryStorage({
-    cloudinary:cloudinary,
-    params:{
-        folder:"blog_posts",
-        allowedFormats:["jpeg","png","jpg",'gif']
-        
-    }
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "blog_posts",
+    allowed_formats: ["jpeg", "png", "jpg", "gif"],
+  },
 });
-const upload=multer({storage:storage});
-module.exports=upload;
+
+const upload = multer({ storage: storage });
+
+module.exports = upload;
+
