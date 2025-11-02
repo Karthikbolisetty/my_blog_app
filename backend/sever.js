@@ -9,11 +9,15 @@ const fs = require("fs");
 const postroutes = require("./router/postroutes.js"); 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
+
 
 
 app.use(cors({
-  origin: ["https://my-blog-app-frontend.onrender.com"],
+  origin: [
+    "https://my-blog-app-frontend.onrender.com",
+    "https://my-blog-app-image-frontend.onrender.com"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
