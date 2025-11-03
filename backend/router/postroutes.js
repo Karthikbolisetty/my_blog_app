@@ -143,7 +143,7 @@ router.get("/", async (req, res) => {
 // ✅ Update a post
 router.put("/:id", upload.single("image"),async (req, res) => {
   try {
-    const {title,content,name}=res.body;
+    const {title,content,name}=req.body;
     const updatedata={title,content,name};
     if(req.file){
       const exsistingpost=await posts.findById(req.params.id);
