@@ -158,7 +158,7 @@ router.put("/:id", upload.single("image"),async (req, res) => {
     
   } 
   catch (error) {
-    console.error("❌ Error updating post:", error.message);
+    console.error("❌ Error updating post:", error);
     res.status(500).json({ message: "Error updating post" });
   }
 });
